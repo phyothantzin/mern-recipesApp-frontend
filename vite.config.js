@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://mernrecipeapp.onrender.com',
+        target: 'https://mernrecipeapp.onrender.com/',
         changeOrigin: true,
       },
     },

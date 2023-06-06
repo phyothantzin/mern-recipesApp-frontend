@@ -8,7 +8,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL}/login`,
         credentials: "include",
         withCredentials: true,
-        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'}
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
         body: data,
       }),
@@ -18,7 +18,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL}`,
         credentials: "include",
         withCredentials: true,
-        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'}
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
         body: data,
       }),

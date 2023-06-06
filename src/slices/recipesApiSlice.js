@@ -6,12 +6,18 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
     fetchRecipes: builder.mutation({
       query: () => ({
         url: `${RECIPES_URL}`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'GET',
       }),
     }),
     fetchUserRecipes: builder.mutation({
       query: (data) => ({
         url: `${RECIPES_URL}`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
         body: data,
       }),
@@ -19,6 +25,9 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
     createRecipes: builder.mutation({
       query: (data) => ({
         url: `${RECIPES_URL}/create`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
         body: data,
       }),
@@ -26,6 +35,9 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
     saveRecipes: builder.mutation({
       query: (data) => ({
         url: `${RECIPES_URL}/save`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'PUT',
         body: data,
       }),
@@ -33,6 +45,9 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
     unsaveRecipes: builder.mutation({
       query: (data) => ({
         url: `${RECIPES_URL}/unsave`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'PUT',
         body: data,
       }),
@@ -40,6 +55,9 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
     deleteRecipes: builder.mutation({
       query: (data) => ({
         url: `${RECIPES_URL}/delete`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'DELETE',
         body: data,
       }),

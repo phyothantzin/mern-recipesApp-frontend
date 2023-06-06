@@ -6,6 +6,8 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
     fetchRecipes: builder.mutation({
       query: () => ({
         url: `${RECIPES_URL}`,
+        credentials: "include",
+        withCredentials: true,
         headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'GET',
       }),

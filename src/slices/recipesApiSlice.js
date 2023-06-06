@@ -1,5 +1,5 @@
 import { apiSlice } from './apiSlice'
-const RECIPES_URL = 'https://mernrecipeapp.onrender.com/api/recipes'
+const RECIPES_URL = '/api/recipes'
 
 export const recipesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

@@ -26,6 +26,9 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     update: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/profile`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'PUT',
         body: data,
       }),
@@ -33,6 +36,9 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     logoutApiCall: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/logout`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
       }),
     }),

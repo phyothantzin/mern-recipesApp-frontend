@@ -26,7 +26,6 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${RECIPES_URL}/create`,
         credentials: "include",
-        withCredentials: true,
         headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
         body: data,

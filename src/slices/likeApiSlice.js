@@ -6,6 +6,9 @@ export const likeApiSlice = apiSlice.injectEndpoints({
     likeRecipe: builder.mutation({
       query: (data) => ({
         url: `${LIKE_URL}`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
         body: data,
       }),
@@ -13,6 +16,9 @@ export const likeApiSlice = apiSlice.injectEndpoints({
     dislikeRecipe: builder.mutation({
       query: (data) => ({
         url: `${LIKE_URL}/remove`,
+        credentials: "include",
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
         method: 'POST',
         body: data,
       }),

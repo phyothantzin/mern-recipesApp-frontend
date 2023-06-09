@@ -27,33 +27,41 @@ const CreateRecipesScreen = () => {
     }
   }, [navigate, userInfo])
 
-  function convertToBase64(e) {
-    let reader = new FileReader()
-    reader.readAsDataURL(e.target.files[0])
-    reader.onload = () => setImage(reader.result)
-    reader.onerror = (err) => toast.error(err)
-  }
+//   function convertToBase64(e) {
+//     let reader = new FileReader()
+//     reader.readAsDataURL(e.target.files[0])
+//     reader.onload = () => setImage(reader.result)
+//     reader.onerror = (err) => toast.error(err)
+//   }
 
   const submitHandler = async (e) => {
     e.preventDefault()
 
     if (name === '') toast.error('Recipe name cannot be empty')
-    if (image == '') {
+    if (!image) {
       confirm('Are you sure, you do not want to add an image?')
     }
     if (instruction === '') toast.error('Instruction cannot be empty')
     if (ingredients === '') toast.error('Recipe ingredients cannot be empty')
     if (duration === 0) toast.error('Duration cannot be 0')
+    
+    const newRecipe = {
+      name,
+      instruction,
+      ingredients,
+      duration,
+      owner: userInfo._id,
+    }
+    
+    const formData = new FormData()
+    const filename = Date.now() + image.name
+    formData.append('name', filename)
+    formData.append('image', image)
+    newRecipe.image = filename
 
     try {
-      const res = await createRecipes({
-        name,
-        image,
-        instruction,
-        ingredients,
-        duration,
-        owner: userInfo._id,
-      })
+      await axios.post('http://localhost:5000/api/upload', formData)
+      const res = await createRecipes(newRecipe)
       navigate('/')
     } catch (err) {
       toast.error(err?.data?.message || err.error)
@@ -75,12 +83,18 @@ const CreateRecipesScreen = () => {
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Image</Form.Label>
-          <Form.Control type="file" onChange={(e) => convertToBase64(e)} />
-          {image === '' || image === null ? (
-            ''
-          ) : (
-            <img className="mt-3 image-fluid w-100" src={image} />
+          <Form.Control type="file" onChange={(e) => setImage(e.target.files[0])} />
+          {image && (
+            <img
+              className="mt-3 image-fluid w-100"
+              src={URL.createObjectURL(image)}
+            />
           )}
+//           {image === '' || image === null ? (
+//             ''
+//           ) : (
+//             <img className="mt-3 image-fluid w-100" src={image} />
+//           )}
         </Form.Group>
         {/* <Form.Group className="my-2" controlId="email">
           <Form.Label>Image URL</Form.Label>

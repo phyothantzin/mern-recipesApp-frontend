@@ -90,11 +90,6 @@ const CreateRecipesScreen = () => {
               src={URL.createObjectURL(image)}
             />
           )}
-//           {image === '' || image === null ? (
-//             ''
-//           ) : (
-//             <img className="mt-3 image-fluid w-100" src={image} />
-//           )}
         </Form.Group>
         {/* <Form.Group className="my-2" controlId="email">
           <Form.Label>Image URL</Form.Label>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import { toast } from 'react-toastify'
 import { useCreateRecipesMutation } from '../slices/recipesApiSlice'
+import axios from 'axios'
 
 const CreateRecipesScreen = () => {
   const [name, setName] = useState('')

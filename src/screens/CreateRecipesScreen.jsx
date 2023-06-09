@@ -60,7 +60,7 @@ const CreateRecipesScreen = () => {
     newRecipe.image = filename
 
     try {
-      await axios.post('http://localhost:5000/api/upload', formData)
+      await axios.post('https://mernrecipeapp.onrender.com/api/upload', formData)
       const res = await createRecipes(newRecipe)
       navigate('/')
     } catch (err) {

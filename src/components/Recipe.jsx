@@ -22,7 +22,7 @@ const Recipe = ({
   showUnsave,
   showDelete,
 }) => {
-  const PF = 'http://localhost:5000/images/'
+  const PF = 'https://mernrecipeapp.onrender.com/images/'
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
